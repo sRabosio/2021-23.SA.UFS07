@@ -64,10 +64,10 @@ Until the server close the connection the browser will remain in loading state.
 Leaving netcat running, use tmux to switch to the other terminal and sen the http message on the FIFO pipe 
 
 ```sh
-cat 0-foundations/1-http/http-response.txt >> /tmp/fifo-pipe
+cat http-response.txt >> /tmp/fifo-pipe
 ```
 
-The above command will send our <walkthrough-editor-open-file filePath="cloudshell_open/2021-23.SA.UFS07/0-foundations/1-http/http-response.txt">http-response.txt</walkthrough-editor-open-file> to the FIFO pipe, the tail -f command will copy data in the pipe to the netcat web server and finally to the browser!
+The above command will send our <walkthrough-editor-open-file filePath="http-response.txt">http-response.txt</walkthrough-editor-open-file> to the FIFO pipe, the tail -f command will copy data in the pipe to the netcat web server and finally to the browser!
 
 <walkthrough-footnote>
 you can switch between terminal window using
