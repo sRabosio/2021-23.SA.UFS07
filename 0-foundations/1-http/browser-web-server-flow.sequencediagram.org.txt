@@ -1,0 +1,10 @@
+title High level HTTP browser/web server flow
+
+User->Browser: Type a web site URL
+Browser->DNS: ask the URL domain resolution to IP
+DNS->Browser: send the resolved domain (web server) IP
+Browser->Web Server: Open a TCP connection to the web server IP on the port 80
+Browser->Web Server: Send an HTTP request message over the TCP connection
+Web Server->Browser: Send an HTTP response over the TCP connection\n and close the connection
+Browser->Browser: Interprets the HTTP response
+Browser->User: Render the HTTP response content\n (eg. HTML page, an image or a simple text)

@@ -1,0 +1,10 @@
+HTTP/1.1 200 OK
+Content-Type: text/html; charset=UTF-8
+
+<html>
+    <head>
+    </head>
+    <body>
+        <h1>SIMPLY AS THAT!</h1>
+    </body>
+</html>
