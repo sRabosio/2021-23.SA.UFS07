@@ -1,0 +1,55 @@
+<html>
+    <head>
+        <style>
+            #render {
+                position: relative;
+                top: 0px;
+            }
+
+            #render.move {
+                transition: top 20s;
+                top: 80vh;
+            }
+
+            #compositor.move {
+                transition: transform 20s;
+                transform: translate(0, 80vh);
+            }
+        </style>
+        <script>
+            function log(n) {
+                var logContainer = document.getElementById("log");
+                for(var i=0; i<n; i++) {
+                    var logElement = document.createElement('p');
+                    var currentDate = new Date();
+                    var logText = "Element n. " + i + " at " + currentDate.getMinutes() + ":" + currentDate.getSeconds() + ":" + currentDate.getMilliseconds();
+                    logElement.innerText = logText;
+                    logContainer.appendChild(logElement);
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <h1>index.html</h1>
+        <div style="display: flex; justify-content: space-evenly;">
+            <div
+                id="render"
+                onclick="this.classList.add('move');"
+            >
+                <p>my position change without transform</p>
+            </div>
+            <div
+                id="compositor"
+                onclick="this.classList.add('move')"
+            >
+                <p>my position change with transform</p>
+            </div>
+            <div
+                id="log"
+                onclick="log(10000);"
+            >
+                <p>Click me to execute a lot of JS</p>
+            </div>
+        </div>
+    </body>
+</html>
