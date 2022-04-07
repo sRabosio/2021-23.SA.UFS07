@@ -1,0 +1,37 @@
+<html>
+    <head>
+        <style>
+            #render {
+                position: relative;
+                top: 0px;
+            }
+
+            #render.move {
+                transition: top 2s;
+                top: 80vh;
+            }
+
+            #compositor.move {
+                transition: transform 2s;
+                transform: translate(0, 80vh);
+            }
+        </style>
+    </head>
+    <body>
+        <h1>index.html</h1>
+        <div style="display: flex; justify-content: space-evenly;">
+            <div
+                id="render"
+                onclick="this.classList.add('move')"
+            >
+                <p>my position change without transform</p>
+            </div>
+            <div
+                id="compositor"
+                onclick="this.classList.add('move')"
+            >
+                <p>my position change with transform</p>
+            </div>
+        </div>
+    </body>
+</html>
