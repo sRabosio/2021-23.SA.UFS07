@@ -17,21 +17,26 @@
             }
         </style>
         <script>
+            function appendToNTimes(i, logContainer, nTimes) {
+                var logElement = document.createElement('p');
+                var currentDate = new Date();
+                var logText = "Element n. " + i + " at " + currentDate.getMinutes() + ":" + currentDate.getSeconds() + ":" + currentDate.getMilliseconds();
+                logElement.innerText = logText;
+                return function() {
+                    logContainer.appendChild(logElement);
+                    if (i < nTimes) {
+                        window.requestIdleCallback(appendToNTimes(++i, logContainer, nTimes));
+                    }
+                }
+            }
             function log(n) {
                 var logContainer = document.getElementById("log");
-                for(var i=0; i<n; i++) {
-                    var logElement = document.createElement('p');
-                    var currentDate = new Date();
-                    var logText = "Element n. " + i + " at " + currentDate.getMinutes() + ":" + currentDate.getSeconds() + ":" + currentDate.getMilliseconds();
-                    logElement.innerText = logText;
-                    logContainer.appendChild(logElement);
-                }
+                window.requestIdleCallback(appendToNTimes(0, logContainer, n));
             }
         </script>
     </head>
     <body>
         <h1>index.html</h1>
-        <p>avoid page janks with <a href="request-idle-callback.html">request-idle-callback.html</a></p>
         <div style="display: flex; justify-content: space-evenly;">
             <div
                 id="render"
@@ -49,7 +54,7 @@
                 id="log"
                 onclick="log(10000);"
             >
-                <p>Click me to execute a lot of JS</p>
+                <p>click me to execute a lot of JS</p>
             </div>
         </div>
     </body>
