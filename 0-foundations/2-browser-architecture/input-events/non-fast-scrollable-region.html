@@ -1,11 +1,143 @@
 <html>
-    <head>
-    </head>
-    <body style="font-size: 3rem;">
-        <h1>non-fast-scrollable-region.html</h1>
-        <p>
-            <a href="..">back</a>
-            <br />
-        </p>
-    </body>
+
+<head>
+    <style>
+        img {
+            transition: transform 3s;
+        }
+    </style>
+</head>
+
+<body style="font-size: 3rem;">
+    <h1>non-fast-scrollable-region.html</h1>
+    <p>
+        <a href="..">back</a>
+        <br />
+    </p>
+    <div style="display: flex; justify-content: space-evenly;">
+        <div id="one">
+            <div>
+                <img src="https://picsum.photos/200?random=1" />
+            </div>
+            <div>
+                <img src="https://picsum.photos/200?random=2" />
+            </div>
+            <div>
+                <img src="https://picsum.photos/200?random=3" />
+            </div>
+            <div>
+                <img src="https://picsum.photos/200?random=4" />
+            </div>
+            <div>
+                <img src="https://picsum.photos/200?random=5" />
+            </div>
+            <div>
+                <img src="https://picsum.photos/200?random=6" />
+            </div>
+            <div>
+                <img src="https://picsum.photos/200?random=7" />
+            </div>
+            <div>
+                <img src="https://picsum.photos/200?random=11" />
+            </div>
+            <div>
+                <img src="https://picsum.photos/200?random=21" />
+            </div>
+            <div>
+                <img src="https://picsum.photos/200?random=31" />
+            </div>
+            <div>
+                <img src="https://picsum.photos/200?random=41" />
+            </div>
+            <div>
+                <img src="https://picsum.photos/200?random=51" />
+            </div>
+            <div>
+                <img src="https://picsum.photos/200?random=61" />
+            </div>
+            <div>
+                <img src="https://picsum.photos/200?random=71" />
+            </div>
+        </div>
+        <div id="two">
+            <div>
+                <img src="https://picsum.photos/200?random=10" />
+            </div>
+            <div>
+                <img src="https://picsum.photos/200?random=20" />
+            </div>
+            <div>
+                <img src="https://picsum.photos/200?random=30" />
+            </div>
+            <div>
+                <img src="https://picsum.photos/200?random=40" />
+            </div>
+            <div>
+                <img src="https://picsum.photos/200?random=50" />
+            </div>
+            <div>
+                <img src="https://picsum.photos/200?random=60" />
+            </div>
+            <div>
+                <img src="https://picsum.photos/200?random=70" />
+            </div>
+            <div>
+                <img src="https://picsum.photos/200?random=100" />
+            </div>
+            <div>
+                <img src="https://picsum.photos/200?random=200" />
+            </div>
+            <div>
+                <img src="https://picsum.photos/200?random=300" />
+            </div>
+            <div>
+                <img src="https://picsum.photos/200?random=400" />
+            </div>
+            <div>
+                <img src="https://picsum.photos/200?random=500" />
+            </div>
+            <div>
+                <img src="https://picsum.photos/200?random=600" />
+            </div>
+            <div>
+                <img src="https://picsum.photos/200?random=700" />
+            </div>
+        </div>
+    </div>
+    <script>
+        function magicTouchHandler(passive) {
+            var currentTurn = 0;
+            return function (event) {
+                if (!passive) {
+                    if (event.cancelable) {
+                        event.preventDefault();
+                    }
+                }
+                currentTurn += Math.sign(event.deltaY) * 0.3;
+                this.childNodes[1].style.transform = 'rotate3d(1, 0, 0, ' + currentTurn + 'turn)';
+            }
+        }
+
+        Array.from(document.querySelectorAll("#one div img")).map(function (el) {
+            el.parentElement.addEventListener(
+                'mousewheel',
+                magicTouchHandler(true),
+                {
+                    passive: true
+                }
+            );
+        });
+
+        Array.from(document.querySelectorAll("#two div img")).map(function (el) {
+            el.parentElement.addEventListener(
+                'mousewheel',
+                magicTouchHandler(false),
+                {
+                    passive: false
+                }
+            );
+        });
+    </script>
+</body>
+
 </html>
