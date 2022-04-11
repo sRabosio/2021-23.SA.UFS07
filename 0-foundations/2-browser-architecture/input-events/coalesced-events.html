@@ -1,5 +1,25 @@
 <html>
     <head>
+        <style>
+            .point {
+                position: absolute;
+                border-radius: 4px;
+                width: 8px;
+                height: 8px;
+                border-color: black;
+                border-style: solid;
+                border-width: 1px;
+                background-color: black;
+            }
+
+            .isCoalesced {
+                background-color: red;
+                border-color: red;
+                border-radius: 2px;
+                width: 4px;
+                height: 4px;
+            }
+        </style>
     </head>
     <body style="font-size: 3rem;">
         <h1>coalesced-events.html</h1>
@@ -7,5 +27,26 @@
             <a href="..">back</a>
             <br />
         </p>
+
+        <script>
+            function createPoint(x,y, isCoalesced) {
+                var point = document.createElement('div');
+                point.style.left = x + 'px';
+                point.style.top = y + 'px';
+                point.classList.add('point');
+                if (isCoalesced) {
+                    point.classList.add('isCoalesced');
+                }
+                document.body.appendChild(point);
+            }
+
+            window.addEventListener('pointermove', function(event) {
+                createPoint(event.pageX, event.pageY);
+                var events = event.getCoalescedEvents();
+                for (var cevent of events) {
+                    createPoint(cevent.pageX, cevent.pageY, true);
+                }
+            }, {passive: true});
+        </script>
     </body>
 </html>
