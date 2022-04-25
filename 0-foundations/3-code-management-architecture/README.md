@@ -38,3 +38,4 @@ Using the _Source Control_ sidebar we can look for other branches on this repo.
 
 To advance to the next step we need to switch to `feature/0-gitlens-for-vscode`
 
+![4-switch-branch](images/4-switch-branch.png)
