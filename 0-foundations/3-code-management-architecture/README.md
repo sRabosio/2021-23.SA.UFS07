@@ -51,3 +51,12 @@ If we want to see the diff on what's staged we need to click on the file and a d
 
 If we click the "-" on the right of the staged file the changes will be removed from the staging area (same as `git reset`).
 
+## discard all changes
+
+If we use the _Discard all changes_ (same as `git checkout .`) while our changes are also in the staging area we'll discard only unstaged changes (so our edit at the fourth element of the list).
+
+![11-checkout-all-changes](images/11-checkout-all-changes.png)
+
+To discard also what we have staged we need to unstage all changes (same as `git reset .`) that are in the stgaging area and then use the _Discard all changes_
+
+![10-unstage-from-staging-area](images/10-unstage-from-staging-area.png)
