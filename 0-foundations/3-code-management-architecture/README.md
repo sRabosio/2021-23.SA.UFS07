@@ -60,3 +60,13 @@ If we use the _Discard all changes_ (same as `git checkout .`) while our changes
 To discard also what we have staged we need to unstage all changes (same as `git reset .`) that are in the stgaging area and then use the _Discard all changes_
 
 ![10-unstage-from-staging-area](images/10-unstage-from-staging-area.png)
+
+## stage hunk from diff
+
+When we made a lot of edits would be not easy to find them along our edited files.
+
+We can click the file under the Changes to open a side by side diff.
+
+Doing that we can review changes and add them to the staging area selectively.
+
+![12-stage-hunk-from-diff](images/12-stage-hunk-from-diff.png)
