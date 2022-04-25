@@ -3,3 +3,4 @@ image: gitpod/workspace-node-lts
 vscode:
   extensions:
     - eamodio.gitlens
+    - https://github.com/bendera/vscode-commit-message-editor/releases/download/v0.19.7/commit-message-editor-0.19.7.vsix
