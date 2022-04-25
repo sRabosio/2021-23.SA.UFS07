@@ -4,7 +4,8 @@
   "description": "From there you need to operate Git to follow this tutorial.",
   "main": "README.md",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "release": "standard-version"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/ITSRizzoli/2021-23.SA.UFS07/issues"
   },
-  "homepage": "https://github.com/ITSRizzoli/2021-23.SA.UFS07#readme"
+  "homepage": "https://github.com/ITSRizzoli/2021-23.SA.UFS07#readme",
+  "devDependencies": {
+    "standard-version": "^9.3.2"
+  }
 }
