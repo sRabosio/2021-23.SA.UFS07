@@ -10,4 +10,6 @@ Simply execute in this folder
 
 `npm run release`
 
-and follow instruction on screen
+and follow instruction on screen.
+
+**NB: we dind't publish any npm package so the `npm publish` command is not for us for now.**
