@@ -70,3 +70,6 @@ We can click the file under the Changes to open a side by side diff.
 Doing that we can review changes and add them to the staging area selectively.
 
 ![12-stage-hunk-from-diff](images/12-stage-hunk-from-diff.png)
+# NEXT: navigate between file revisions
+
+switch on feature/1-navigate-between-file-revisions
