@@ -1,75 +1,51 @@
-# 1 stage and unstage
+# 2 Navigate between file revisions
 
-Great you are good to switching branches!!
+## using the per file revision navigation
 
-Switching branch imply you also create a local branch
+Use those buttons to show the history of a file
+![13-navigate-between-file-revisions](images/13-navigate-between-file-revisions.png)
 
-![5-switch-branch-done](images/5-switch-branch-done.png)
+## using the sidebar file history
 
-## switch back
+we can also use the sidebar file history to se all the commits that have changed the current file
+![14-sidebar-file-history](images/14-sidebar-file-history.png)
 
-You can now switch back using the shortcut arrow
+with right click on a commit we can do a lot of things
+- open file at revision
+- open change with various modes (eg. compare the version of the file with other versions)
 
-**NB: when you switch the content of this file will change!**
+## inline git blame
 
-![6-switch-branch-back](images/6-switch-branch-back.png)
+the git blame tool enable us to see for every line of a file the last commit that has edited the line
 
-## stage a single line directly in the editor
+overing the blame grey message will popup a infobox
 
-So now you need to eding something for example
+![15-inline-gitblame](images/15-inline-gitblame.png)
 
-- this line will remain
-- remove this line
-- this line will remain
-- edit the text of this line but didn't stage it
+from the infobox we can learn about the commit and we can also
+- open the changes at the previous commit
+- open the blame at the previous commit
 
-after you edit the above list, save and then use the stage hunk to only stage the second one.
+## commits sidebar
+the sidebar commit is also useful to understand what happen from commit to commit
+### show every file changed in a commit
 
+![16-sidebar-commit](images/16-sidebar-commit.png)
 
-To open the Git action menu' only for a single change you need to click on the right to the source code near line numbers
-- red triangle means line removed
-- blu highlight mean changes
-- red highligh mean additions
+from the sidebar for each commit we can see every file changed and we can open the diff.
 
-![7-stage-single-hunk](images/7-stage-single-hunk.png)
+we can also open a file with the content at a specific revision
 
-On the top right of the popup you'll find some useful actions.
+![17-open-file-at-revision](images/17-open-file-at-revision.png)
 
-The + will add to our staging area only a single line.
+## links from terminal to code
 
-![8-stage-single-hunk-action-menu](images/8-stage-single-hunk-action-menu.png)
+another useful feature is the ability to open a file, a commit or other git stuff from the terminal to the editor
 
-## see the diff between staging area and the local repo
+for example if we run `git log -2` in the terminal to show te last two commits we can CTRL+click some links
 
-after that you'll some changes on the sidebar, the GUI tell us that something is staged and something not.
+![18-link-from-terminal](images/18-link-from-terminal.png)
 
-If we want to see the diff on what's staged we need to click on the file and a diff will be opened. (same as `git status --staged`)
+# NEXT: the GitLens command palette
 
-![9-staging-area-diffs](images/9-staging-area-diffs.png)
-
-## unstage a change
-
-If we click the "-" on the right of the staged file the changes will be removed from the staging area (same as `git reset`).
-
-## discard all changes
-
-If we use the _Discard all changes_ (same as `git checkout .`) while our changes are also in the staging area we'll discard only unstaged changes (so our edit at the fourth element of the list).
-
-![11-checkout-all-changes](images/11-checkout-all-changes.png)
-
-To discard also what we have staged we need to unstage all changes (same as `git reset .`) that are in the stgaging area and then use the _Discard all changes_
-
-![10-unstage-from-staging-area](images/10-unstage-from-staging-area.png)
-
-## stage hunk from diff
-
-When we made a lot of edits would be not easy to find them along our edited files.
-
-We can click the file under the Changes to open a side by side diff.
-
-Doing that we can review changes and add them to the staging area selectively.
-
-![12-stage-hunk-from-diff](images/12-stage-hunk-from-diff.png)
-# NEXT: navigate between file revisions
-
-switch on feature/1-navigate-between-file-revisions
+Switch on feature/2-git-lens-command-palette to go over.
