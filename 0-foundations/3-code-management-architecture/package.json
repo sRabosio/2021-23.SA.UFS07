@@ -1,0 +1,19 @@
+{
+  "name": "3-code-management-architecture",
+  "version": "0.0.0",
+  "description": "From there you need to operate Git to follow this tutorial.",
+  "main": "README.md",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ITSRizzoli/2021-23.SA.UFS07.git"
+  },
+  "author": "Alessandro Aglietti",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/ITSRizzoli/2021-23.SA.UFS07/issues"
+  },
+  "homepage": "https://github.com/ITSRizzoli/2021-23.SA.UFS07#readme"
+}
