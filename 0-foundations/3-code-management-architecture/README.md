@@ -38,3 +38,12 @@ On the top right of the popup you'll find some useful actions.
 The + will add to our staging area only a single line.
 
 ![8-stage-single-hunk-action-menu](images/8-stage-single-hunk-action-menu.png)
+
+## see the diff between staging area and the local repo
+
+after that you'll some changes on the sidebar, the GUI tell us that something is staged and something not.
+
+If we want to see the diff on what's staged we need to click on the file and a diff will be opened. (same as `git status --staged`)
+
+![9-staging-area-diffs](images/9-staging-area-diffs.png)
+
