@@ -47,3 +47,7 @@ If we want to see the diff on what's staged we need to click on the file and a d
 
 ![9-staging-area-diffs](images/9-staging-area-diffs.png)
 
+## unstage a change
+
+If we click the "-" on the right of the staged file the changes will be removed from the staging area (same as `git reset`).
+
