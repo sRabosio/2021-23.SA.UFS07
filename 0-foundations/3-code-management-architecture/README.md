@@ -14,7 +14,7 @@ You can now switch back using the shortcut arrow
 
 ![6-switch-branch-back](images/6-switch-branch-back.png)
 
-## stage something
+## stage a single line directly in the editor
 
 So now you need to eding something for example
 
@@ -23,4 +23,18 @@ So now you need to eding something for example
 - this line will remain
 - edit the text of this line but didn't stage it
 
-after you edit the above list, save and then use the stage hunk to only stage the second one
+after you edit the above list, save and then use the stage hunk to only stage the second one.
+
+
+To open the Git action menu' only for a single change you need to click on the right to the source code near line numbers
+- red triangle means line removed
+- blu highlight mean changes
+- red highligh mean additions
+
+![7-stage-single-hunk](images/7-stage-single-hunk.png)
+
+On the top right of the popup you'll find some useful actions.
+
+The + will add to our staging area only a single line.
+
+![8-stage-single-hunk-action-menu](images/8-stage-single-hunk-action-menu.png)
