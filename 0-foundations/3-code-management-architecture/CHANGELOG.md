@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.2](https://github.com/ITSRizzoli/2021-23.SA.UFS07/compare/v0.0.1...v0.0.2) (2022-04-25)
+
+
+### Bug Fixes
+
+* added release-please github action ([552a6fc](https://github.com/ITSRizzoli/2021-23.SA.UFS07/commit/552a6fc656700ecc0f60552e4cd4600fcd0162a8))
+
 ### [0.0.1](https://github.com/ITSRizzoli/2021-23.SA.UFS07/compare/v0.0.0...v0.0.1) (2022-04-25)
 
 
