@@ -1,4 +1,3 @@
-checkoutLocation: "0-foundations/3-code-management-architecture"
 image: gitpod/workspace-node-lts
 vscode:
   extensions:
