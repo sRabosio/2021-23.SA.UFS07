@@ -4,6 +4,9 @@ set -e
 
 date
 
+# this exit with 1 if no auth configured
+gh auth status
+
 # env passed by GitHub Action environment
 # GITHUB_REF_NAME="36/merge"
 # GITHUB_HEAD_REF="patch-1"
