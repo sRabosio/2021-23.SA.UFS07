@@ -66,14 +66,20 @@ gh run list --branch $GITHUB_HEAD_REF --repo $repo --limit 1 \
             --json conclusion \
             --json updatedAt \
             --json status \
-            --json url | \
-            jq -r '.[] | [.conclusion, .updatedAt, .status, .url] | @tsv' | \
-            while IFS=$'\t' read -r conclusion updatedAt status url; do
+            --json url \
+            --json databaseId | \
+            jq -r '.[] | [.conclusion, .updatedAt, .status, .url, .databaseId] | @tsv' | \
+            while IFS=$'\t' read -r conclusion updatedAt status url runId; do
                 echo "========= checking run"
                 echo "url: $url"
                 echo "updatedAt: $updatedAt"
                 echo "status: $status"
                 echo "conclusion: $conclusion"
+                if [ -z "${url}" ];
+                then
+                    echo "run url is empty so is queued or in_progress"
+                    gh run watch --repo $repo --exit-status $runId
+                fi
                 if [ "$status" != "completed" ];
                 then
                     echo "this run is not completed"
