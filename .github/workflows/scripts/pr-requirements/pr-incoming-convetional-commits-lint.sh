@@ -33,5 +33,19 @@ echo "prFirstCommitSha: $prFirstCommitSha"
 prBaseSha=`git rev-parse $prFirstCommitSha^`
 echo "prBaseSha: $prBaseSha"
 
+set +e
 # check every commit message from the prBaseSha
 npm run commitlint -- -V --from $prBaseSha
+lintStatus=$?
+set -e
+
+lintStatus=$?
+
+if [ "$RUN_COUNT" -ne "0" ];
+then
+    echo "There are commits that do not respect convetional commits"
+    gh pr edit $prId --add-label "NOT_CONVENTIONAL_COMMITS"
+    exit 1
+else
+    gh pr edit $prId --remove-label "NOT_CONVENTIONAL_COMMITS"
+fi
