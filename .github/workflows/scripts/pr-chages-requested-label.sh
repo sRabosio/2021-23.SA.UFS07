@@ -44,4 +44,8 @@ changesRequestedCount=`cat changesRequestedUrls.ignore.json | jq '. | length'`
 if [ "$changesRequestedCount" -ne "0" ];
 then
     echo "There are CHANGES REQUESTED ON THIS PR"
+
+    gh pr edit $prId --add-label "CHANGES_REQUESTED"
+else
+    gh pr edit $prId --remove-label "CHANGES_REQUESTED"
 fi
