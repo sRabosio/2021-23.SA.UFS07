@@ -9,7 +9,6 @@ gh auth status
 
 # env passed by GitHub Action environment
 # GITHUB_REF_NAME="18/merge"
-# GITHUB_HEAD_REF="master"
 
 if [ -z "${GITHUB_REF_NAME}" ];
 then
@@ -17,15 +16,14 @@ then
     exit 1
 fi
 
-if [ -z "${GITHUB_HEAD_REF}" ];
-then
-    echo "env GITHUB_HEAD_REF is empty"
-    exit 1
-fi
-
 # retrieve pr id
 IFS=$'\/' read -r prId _ <<< $GITHUB_REF_NAME
 echo "prId $prId"
+
+# fetch more commits
+prCommits=`gh pr view $prId --json commits | jq '.commits | length'`
+fetchDepthToPrBase=`expr $prCommits + 2`
+git fetch --no-tags --prune --progress --no-recurse-submodules --deepen=$fetchDepthToPrBase
 
 # retrive the pr first commit
 prFirstCommitSha=`gh pr view $prId --json commits | jq -r '.commits | first | .oid'`
