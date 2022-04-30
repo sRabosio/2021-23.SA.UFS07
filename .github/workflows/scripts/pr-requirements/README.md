@@ -1,4 +1,8 @@
-# Last PRs updates
+# PR requirements
+
+Inside this folder there are some utils used by the teacher to check students PR.
+
+We use something like CI for checking assignment status.
 
 ## using updatedAt
 
