@@ -23,7 +23,7 @@ echo "prId $prId"
 # fetch more commits
 prCommits=`gh pr view $prId --json commits | jq '.commits | length'`
 fetchDepthToPrBase=`expr $prCommits + 2`
-git fetch --no-tags --prune --progress --no-recurse-submodules --deepen=$fetchDepthToPrBase
+git fetch --no-tags --prune --no-recurse-submodules --deepen=$fetchDepthToPrBase
 
 # retrive the pr first commit
 prFirstCommitSha=`gh pr view $prId --json commits | jq -r '.commits | first | .oid'`
