@@ -8,4 +8,6 @@ on:
     types: [created, edited, deleted]
 jobs:
   create-artifact-for-workflow_run:
-    uses: ./.github/workflows/create-artifact-for-workflow_run.yml
+    # https://github.com/github/feedback/discussions/14306#discussioncomment-2635181
+    # error when I use the only the workflow is triggered by pull_request_review...
+    uses: ITSRizzoli/2021-23.SA.UFS07/.github/workflows/create-artifact-for-workflow_run.yml@master
