@@ -16,21 +16,7 @@ then
     exit 1
 fi
 
-if [ -z "${SOURCE_RUN_WORKFLOW_ID}" ];
-then
-    echo "env SOURCE_RUN_WORKFLOW_ID is empty"
-    exit 1
-fi
-echo "SOURCE_RUN_WORKFLOW_ID: $SOURCE_RUN_WORKFLOW_ID"
-
-echo "waiting for source workflow finishes...."
-gh run watch $SOURCE_RUN_WORKFLOW_ID
-
-gh run download $SOURCE_RUN_WORKFLOW_ID
-SOURCE_RUN_WORKFLOW_GITHUB_REF_NAME=`grep -oP "GITHUB_REF_NAME=\K.*" trigger_envs/trigger_envs.txt`
-echo "SOURCE_RUN_WORKFLOW_GITHUB_REF_NAME is $SOURCE_RUN_WORKFLOW_GITHUB_REF_NAME"
-
-IFS=$'\/' read -r prId _ <<< $SOURCE_RUN_WORKFLOW_GITHUB_REF_NAME
+IFS=$'\/' read -r prId _ <<< $GITHUB_REF_NAME
 echo "prId $prId"
 
 # fetch more commits
@@ -59,9 +45,10 @@ lintStatus=$?
 
 if [ "$lintStatus" -ne "0" ];
 then
-    echo "There are commits that do not respect convetional commits"
-    gh pr edit $prId --add-label "NOT_CONVENTIONAL_COMMITS"
+    echo "There are commits that do not respect conventional commits"
+    # gh pr edit $prId --add-label "NOT_CONVENTIONAL_COMMITS"
     exit 1
 else
-    gh pr edit $prId --remove-label "NOT_CONVENTIONAL_COMMITS"
+    echo "All commits respect conventional commits spec!!!"
+    # gh pr edit $prId --remove-label "NOT_CONVENTIONAL_COMMITS"
 fi
