@@ -41,7 +41,7 @@ set -e
 
 lintStatus=$?
 
-if [ "$RUN_COUNT" -ne "0" ];
+if [ "$lintStatus" -ne "0" ];
 then
     echo "There are commits that do not respect convetional commits"
     gh pr edit $prId --add-label "NOT_CONVENTIONAL_COMMITS"
