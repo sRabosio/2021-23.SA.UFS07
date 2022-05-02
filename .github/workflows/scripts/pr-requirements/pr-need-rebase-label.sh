@@ -8,15 +8,12 @@ date
 gh auth status
 
 # env passed by GitHub Action environment
-# GITHUB_REF_NAME="18/merge"
+# PR_ID=14
+# or
+# SOURCE_RUN_WORKFLOW_ID=123412414
 
 if [ -z "${PR_ID}" ];
 then
-    if [ -z "${GITHUB_REF_NAME}" ];
-    then
-        echo "env GITHUB_REF_NAME is empty"
-        exit 1
-    fi
 
     if [ -z "${SOURCE_RUN_WORKFLOW_ID}" ];
     then

@@ -3,6 +3,7 @@ on:
   workflow_run:
     workflows: ["Check that every PR meets requirement"]
     types: ['requested']
+  pull_request_target:
 jobs:
   pr-need-rebase-label:
     runs-on: ubuntu-latest
@@ -17,3 +18,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SOURCE_RUN_WORKFLOW_ID: ${{ github.event.workflow_run.id }}
+          PR_ID: ${{ github.event.number }}
