@@ -3,7 +3,8 @@ on:
   workflow_run:
     workflows: ["Check that every PR meets requirement"]
     types: ['requested']
-  pull_request_target:
+  # seems that do not pass github.event.number
+  # pull_request_target:
 jobs:
   pr-need-rebase-label:
     runs-on: ubuntu-latest
