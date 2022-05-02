@@ -4,12 +4,15 @@ name: Trigger workflow_run to update labels to PR on new comment and review acti
 on:
   pull_request_review:
     types: [submitted, edited, dismissed]
-  issue_comment:
-    types: [created, edited, deleted]
+  pull_request_review_comment:
+    types: [submitted, edited, dismissed]
+  # when is a issue_comment (that wrap a pull_request_comment no PR id seems available)
+  # issue_comment:
+  #   types: [created, edited, deleted]
 jobs:
   create-artifact-for-workflow_run:
     # https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#issue_comment-on-issues-only-or-pull-requests-only
-    if: ${{ github.event.issue.pull_request }}
+    # if: ${{ github.event.issue.pull_request }} # skipped also for pull_request_review...
     # https://github.com/github/feedback/discussions/14306#discussioncomment-2635181
     # error when I use the only the workflow is triggered by pull_request_review...
     uses: ITSRizzoli/2021-23.SA.UFS07/.github/workflows/create-artifact-for-workflow_run.yml@master
