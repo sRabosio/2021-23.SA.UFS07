@@ -10,27 +10,32 @@ gh auth status
 # env passed by GitHub Action environment
 # GITHUB_REF_NAME="18/merge"
 
-if [ -z "${GITHUB_REF_NAME}" ];
+if [ -z "${PR_ID}" ];
 then
-    echo "env GITHUB_REF_NAME is empty"
-    exit 1
+    if [ -z "${GITHUB_REF_NAME}" ];
+    then
+        echo "env GITHUB_REF_NAME is empty"
+        exit 1
+    fi
+
+    if [ -z "${SOURCE_RUN_WORKFLOW_ID}" ];
+    then
+        echo "env SOURCE_RUN_WORKFLOW_ID is empty"
+        exit 1
+    fi
+    echo "SOURCE_RUN_WORKFLOW_ID: $SOURCE_RUN_WORKFLOW_ID"
+
+    echo "waiting for source workflow finishes...."
+    gh run watch $SOURCE_RUN_WORKFLOW_ID
+
+    gh run download $SOURCE_RUN_WORKFLOW_ID
+    SOURCE_RUN_WORKFLOW_GITHUB_REF_NAME=`grep -oP "GITHUB_REF_NAME=\K.*" trigger_envs/trigger_envs.txt`
+    echo "SOURCE_RUN_WORKFLOW_GITHUB_REF_NAME is $SOURCE_RUN_WORKFLOW_GITHUB_REF_NAME"
+
+    IFS=$'\/' read -r prId _ <<< $SOURCE_RUN_WORKFLOW_GITHUB_REF_NAME
+else
+    prId=$PR_ID
 fi
-
-if [ -z "${SOURCE_RUN_WORKFLOW_ID}" ];
-then
-    echo "env SOURCE_RUN_WORKFLOW_ID is empty"
-    exit 1
-fi
-echo "SOURCE_RUN_WORKFLOW_ID: $SOURCE_RUN_WORKFLOW_ID"
-
-echo "waiting for source workflow finishes...."
-gh run watch $SOURCE_RUN_WORKFLOW_ID
-
-gh run download $SOURCE_RUN_WORKFLOW_ID
-SOURCE_RUN_WORKFLOW_GITHUB_REF_NAME=`grep -oP "GITHUB_REF_NAME=\K.*" trigger_envs/trigger_envs.txt`
-echo "SOURCE_RUN_WORKFLOW_GITHUB_REF_NAME is $SOURCE_RUN_WORKFLOW_GITHUB_REF_NAME"
-
-IFS=$'\/' read -r prId _ <<< $SOURCE_RUN_WORKFLOW_GITHUB_REF_NAME
 echo "prId $prId"
 
 # retrieve if is behind
@@ -70,7 +75,7 @@ do
     echo "prMergeable: $prMergeable"
 done
 
-if [ "$prMergeStateStatus" = "CONFLICTING" ];
+if [ "$prMergeable" = "CONFLICTING" ];
 then
     echo "There are conflicts!!"
 
