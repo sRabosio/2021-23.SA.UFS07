@@ -20,6 +20,7 @@ jobs:
         working-directory: ./.github/workflows/scripts/pr-requirements
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SOURCE_RUN_WORKFLOW_ID: ${{ github.event.workflow_run.id }}
   pr-need-rebase-label:
     runs-on: ubuntu-latest
     steps:
@@ -32,3 +33,4 @@ jobs:
       - run: ./.github/workflows/scripts/pr-requirements/pr-need-rebase-label.sh
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SOURCE_RUN_WORKFLOW_ID: ${{ github.event.workflow_run.id }}
