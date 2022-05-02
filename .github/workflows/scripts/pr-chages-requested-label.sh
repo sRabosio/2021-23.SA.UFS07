@@ -29,6 +29,9 @@ then
 fi
 echo "SOURCE_RUN_WORKFLOW_ID: $SOURCE_RUN_WORKFLOW_ID"
 
+echo "waiting for source workflow finishes...."
+gh run watch $SOURCE_RUN_WORKFLOW_ID
+
 gh run download $SOURCE_RUN_WORKFLOW_ID
 SOURCE_RUN_WORKFLOW_GITHUB_REF_NAME=`grep -oP "GITHUB_REF_NAME=\K.*" trigger_envs/trigger_envs.txt`
 echo "SOURCE_RUN_WORKFLOW_GITHUB_REF_NAME is $SOURCE_RUN_WORKFLOW_GITHUB_REF_NAME"

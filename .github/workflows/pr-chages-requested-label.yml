@@ -1,20 +1,11 @@
 name: Trigger workflow_run to update labels to PR on new comment and review activity
+# this trigger workflow_run on .github/workflows/pr-chages-requested-label-workflow-run.yml
+# in this way the GITHUB_TOKEN that's used by workflow_run will have PR write access
 on:
   pull_request_review:
     types: [submitted, edited, dismissed]
   pull_request_review_comment:
     types: [created, edited, deleted]
 jobs:
-  pr-chages-requested-label:
-    # this trigger workflow_run on .github/workflows/pr-chages-requested-label-workflow-run.yml
-    # in this way the GITHUB_TOKEN that's used by workflow_run will have PR write access
-    name: "Label PRs when reviewed"
-    runs-on: ubuntu-latest
-    steps:
-      - name: "Create the trigger_envs.txt artifact"
-        run: env > trigger_envs.txt
-      - name: Upload the artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: trigger_envs
-          path: ./trigger_envs.txt
+  create-artifact-for-workflow_run:
+    uses: ./.github/workflows/create-artifact-for-workflow_run.yml

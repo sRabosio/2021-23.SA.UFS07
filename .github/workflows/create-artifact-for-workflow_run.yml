@@ -1,0 +1,14 @@
+on:
+  workflow_call:
+jobs:
+  create-envs-artifact:
+    name: "Create artifact for workflow_run"
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Create the trigger_envs.txt artifact"
+        run: env > trigger_envs.txt
+      - name: Upload the artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: trigger_envs
+          path: ./trigger_envs.txt
