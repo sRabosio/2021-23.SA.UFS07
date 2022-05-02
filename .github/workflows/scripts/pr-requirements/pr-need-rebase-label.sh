@@ -20,12 +20,15 @@ fi
 IFS=$'\/' read -r prId _ <<< $GITHUB_REF_NAME
 echo "prId $prId"
 
+# retrieve if is behind
+# https://docs.github.com/en/github-ae@latest/graphql/reference/enums#mergestatestatus
+
 prMergeStateStatus=`gh pr view $prId --json mergeStateStatus | jq -r '.mergeStateStatus'`
 echo "prMergeStateStatus: $prMergeStateStatus"
 
 while [ "$prMergeStateStatus" = "UNKNOWN" ]
 do
-    echo "mergeStateStatus unkown retry in 5s..."
+    echo "prMergeStateStatus UNKNOWN retry in 5s..."
     sleep 5
     prMergeStateStatus=`gh pr view $prId --json mergeStateStatus | jq -r '.mergeStateStatus'`
     echo "prMergeStateStatus: $prMergeStateStatus"
@@ -38,4 +41,27 @@ then
     gh pr edit $prId --add-label "NEED_REBASE"
 else
     gh pr edit $prId --remove-label "NEED_REBASE"
+fi
+
+# same for mergeable status
+# https://docs.github.com/en/github-ae@latest/graphql/reference/enums#mergeablestate
+
+prMergeable=`gh pr view $prId --json mergeable | jq -r '.mergeable'`
+echo "prMergeable: $prMergeable"
+
+while [ "$prMergeable" = "UNKNOWN" ]
+do
+    echo "prMergeable UNKNOWN retry in 5s..."
+    sleep 5
+    prMergeable=`gh pr view $prId --json mergeable | jq -r '.mergeable'`
+    echo "prMergeable: $prMergeable"
+done
+
+if [ "$prMergeStateStatus" = "CONFLICTING" ];
+then
+    echo "There are conflicts!!"
+
+    gh pr edit $prId --add-label "HAS_CONFLICTS"
+else
+    gh pr edit $prId --remove-label "HAS_CONFLICTS"
 fi
