@@ -56,11 +56,14 @@ gh api --method GET $ghApiGetReviews | jq '.' > ghApiGetReviewsResponse.ignore.j
 lastReviewState=`cat ghApiGetReviewsResponse.ignore.json | jq -r '. | last | .state'`
 echo "lastReviewState: $lastReviewState"
 
-if [ "$lastReviewState" != "APPROVED" ];
+if [ "$lastReviewState" != "null" ];
 then
-    echo "There are CHANGES REQUESTED ON THIS PR"
+    if [ "$lastReviewState" != "APPROVED" ];
+    then
+        echo "There are CHANGES REQUESTED ON THIS PR"
 
-    gh pr edit $prId --add-label "CHANGES_REQUESTED"
-else
-    gh pr edit $prId --remove-label "CHANGES_REQUESTED"
+        gh pr edit $prId --add-label "CHANGES_REQUESTED"
+    else
+        gh pr edit $prId --remove-label "CHANGES_REQUESTED"
+    fi
 fi
