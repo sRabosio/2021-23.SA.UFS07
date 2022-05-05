@@ -41,8 +41,6 @@ npm run commitlint -- -V --from $prBaseSha
 lintStatus=$?
 set -e
 
-lintStatus=$?
-
 if [ "$lintStatus" -ne "0" ];
 then
     echo "There are commits that do not respect conventional commits"
