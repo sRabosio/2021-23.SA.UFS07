@@ -79,20 +79,13 @@ gh run list --branch $GITHUB_HEAD_REF --repo $repo --limit 1 \
 
                 if [ -z "${url}" ];
                 then
-                    echo "run url is empty so is queued or in_progress"
+                    echo "run url is empty so is queued"
                     gh run watch --repo $repo --exit-status $runId
-                fi
-                if [ "$updatedAt" = "in_progress" ];
+                elif [ "$updatedAt" = "in_progress" ];
                 then
                     echo "this run is not completed"
                     gh run watch --repo $repo --exit-status $url
-                fi
-                if [ "$status" != "completed" ];
-                then
-                    echo "this run is not completed"
-                    exit 1
-                fi
-                if [ "$conclusion" != "success" ];
+                elif [ "$conclusion" != "success" ];
                 then
                     echo "this run is completed without success"
                     exit 1
