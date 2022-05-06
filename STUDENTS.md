@@ -6,8 +6,8 @@
 3 - 
 4 - Cairo
 5 - Callegari
-6 -
-7 - D'Alessandro
+6 - Castro
+7 - 
 8 -
 9 - De Gasperi
 10 - Fulgencio
