@@ -24,7 +24,7 @@
 21 - Stefani
 22 - Tijani
 23 -
-24 -
+24 - Verderio
 25 - Zulini
 
 ## EOF
