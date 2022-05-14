@@ -11,6 +11,19 @@
 
   <body>
     <h1>React 101</h1>
+    <div id="reactContainer"></div>
 
+    <script type="text/javascript">
+        var aReactDiv = React.createElement(
+            "div", // type
+            [], //props
+            "Ciao" // children
+        );
+        var reactContainer = document.getElementById('reactContainer');
+        ReactDOM.render(
+            aReactDiv, // a react component
+            reactContainer // the react container
+        );
+    </script>
   </body>
 </html>
