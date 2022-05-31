@@ -1,6 +1,6 @@
 {
   "name": "1-devops-with-nodejs",
-  "version": "1.6.10",
+  "version": "1.6.11",
   "engines": {
     "npm": "8.5.5",
     "node": "16.15.0"
@@ -25,6 +25,7 @@
     "webpack-dev-server": "^4.8.1"
   },
   "dependencies": {
+    "babel-loader": "^8.2.5",
     "test-1-rabosio": "^1.2.1"
   }
 }
