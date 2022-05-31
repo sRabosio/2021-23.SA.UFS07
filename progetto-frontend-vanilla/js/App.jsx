@@ -1,5 +1,5 @@
 import React from "react";
-import {Button} from "test-1-rabosio/atoms/button/Button";
+import {Button} from "test-1-rabosio/atoms/button/Button"
 
 const App = () => ( 
     <div>
@@ -8,4 +8,4 @@ const App = () => (
     </div>
 );
 
-export default App;
+export default App;         
