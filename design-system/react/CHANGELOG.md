@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.4.0](https://github.com/sRabosio/2021-23.SA.UFS07/compare/v1.3.2...v1.4.0) (2022-06-14)
+
+
+### Features
+
+* added input button ([11598d3](https://github.com/sRabosio/2021-23.SA.UFS07/commit/11598d372d08f208e915b3ea1376c5ab0cc87a12))
+
 ### [1.3.2](https://github.com/sRabosio/2021-23.SA.UFS07/compare/v1.6.12...v1.3.2) (2022-06-06)
 
 ### [1.3.1](https://github.com/sRabosio/2021-23.SA.UFS07/compare/ds1.3.0...ds1.3.1) (2022-06-06)
