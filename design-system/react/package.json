@@ -55,5 +55,8 @@
     "core-js": "^3.22.5",
     "cross-env": "^7.0.3",
     "standard-version": "^9.5.0"
+  },
+  "dependencies": {
+    "test-1-rabosio": "^1.3.1"
   }
 }

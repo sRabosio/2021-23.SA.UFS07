@@ -1,5 +1,6 @@
 import React from "react";
 import {Button} from "test-1-rabosio/atoms/button/Button"
+import {Input} from "test-1-rabosio/atoms/input/Input"
 
 const App = () => ( 
     <div>

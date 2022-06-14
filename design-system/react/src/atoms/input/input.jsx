@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
+import {isValid} from 'ipaddr.js';
 /**
  * Primary UI component for user interaction
  */
@@ -39,3 +39,4 @@ Input.defaultProps = {
   onData: gundefined,
   type: "text",
 };
+
