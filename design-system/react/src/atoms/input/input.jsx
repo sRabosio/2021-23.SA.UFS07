@@ -4,21 +4,31 @@ import {isValid} from 'ipaddr.js';
 /**
  * Primary UI component for user interaction
  */
-export const Input = ({ label, onData, type}) => {
-  function onInput(inputEvent){
-      console.log("inputEvent.onData", inputEvent);
+ export const Input = ({ id, placeholder, onData, isValid, type, label }) => {
+
+  function onInput (InputEvent)
+  {
+    console.log("Input.onData",InputEvent);
+    if(typeof onData==='function'){
+      onData(InputEvent.target.value);
+    }
   }
-  
-    return (
-    <Input
+
+  const message= isValid ? "valore corretto" : "valore errato"
+  return (
+    <>
+      <input id={id}
       onInput={onInput}
+      placeholder={placeholder}
       type={type}
     >
-      {label}
-    </Input>
+    </input>
+
+    {label===undefined ? null : <label htmlFor={id}>{label}</label>}
+    {isValid===undefined ? null : message}
+    </>
   );
 };
-
 Input.propTypes = {
 
   /**
@@ -36,7 +46,11 @@ Input.propTypes = {
 };
 
 Input.defaultProps = {
-  onData: gundefined,
+  onData: undefined,
   type: "text",
+  onData: undefined,
+  isValid: undefined,
+  placeholder: undefined,
+  label: undefined,
 };
 

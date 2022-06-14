@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { input } from '../src/atoms/input/input';
+import { Input } from '../src/atoms/input/input';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
@@ -21,6 +21,6 @@ Text.args ={
   label: 'Input',
   placeholder: '[placeholder text]',
   onData: undefined,
-  isValid: undefined,
+  isValid: true,
   type: 'text',
 };
