@@ -16,6 +16,6 @@ const Template = (args) => <Paragraph {...args}> </Paragraph>;
 
 export const plainParagraph = Template.bind({});
 plainParagraph.args = {
-    children: <Text label={'aijfoisafafposaokof'}></Text>,
+    children: <Text label={'label'}></Text>,
 };
 
